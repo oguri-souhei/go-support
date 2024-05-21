@@ -1,6 +1,7 @@
 package support
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -114,18 +115,8 @@ func ExampleIndexBy() {
 		{Name: "Alice", Age: 28},
 	}
 
-	indexed := IndexBy(people, "Name")
-	println(indexed)
-	// Output:
-	// map[string][]Person{
-	// 	"Alice": {
-	// 		{Name: "Alice", Age: 30},
-	// 		{Name: "Alice", Age: 28},
-	// 	},
-	// 	"Bob": {
-	// 		{Name: "Bob", Age: 25},
-	// 	},
-	// }
+	fmt.Println(IndexBy(people, "Name"))
+	// Output: map[Alice:[{Alice 30} {Alice 28}] Bob:[{Bob 25}]]
 }
 
 func TestOrderBy(t *testing.T) {
@@ -283,12 +274,6 @@ func ExampleOrderBy() {
 		{Name: "Charlie", Age: 28},
 	}
 
-	sortedPeople := OrderBy(people, "Age", "asc")
-	println(sortedPeople)
-	// Output:
-	// []Person{
-	// 	{Name: "Bob", Age: 25},
-	// 	{Name: "Charlie", Age: 28},
-	// 	{Name: "Alice", Age: 30},
-	// }
+	fmt.Println(OrderBy(people, "Age", "asc"))
+	// Output: [{Bob 25} {Charlie 28} {Alice 30}]
 }
